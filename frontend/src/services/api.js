@@ -1,31 +1,17 @@
 import axios from "axios";
 
-
 const api = axios.create({
-  baseURL: "http://127.0.0.1:8000",
+  baseURL: "https://sql-assistant-hla0.onrender.com",
 });
 
-
 export async function getDatabases() {
-
-  const response = await api.get(
-    "/api/databases"
-  );
-
+  const response = await api.get("/api/databases");
   return response.data;
 }
 
-
-export async function uploadDatabase(
-  file
-) {
-
+export async function uploadDatabase(file) {
   const formData = new FormData();
-
-  formData.append(
-    "file",
-    file
-  );
+  formData.append("file", file);
 
   const response = await api.post(
     "/api/upload",
@@ -35,30 +21,18 @@ export async function uploadDatabase(
   return response.data;
 }
 
-
-export async function askQuestion(
-  database,
-  question
-) {
-
-  const response = await api.post(
-    "/api/ask",
-    {
-      database,
-      question,
-    }
-  );
+export async function askQuestion(database, question) {
+  const response = await api.post("/api/ask", {
+    database,
+    question,
+  });
 
   return response.data;
 }
 
-
-export async function getSchema(
-  database
-) {
-
+export async function getSchema(database) {
   const response = await api.get(
-    `/api/databases/${database}/schema`
+    `/api/databases/${encodeURIComponent(database)}/schema`
   );
 
   return response.data;
