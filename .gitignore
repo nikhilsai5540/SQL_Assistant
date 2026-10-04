@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+.env
+
+# Node
+node_modules/
+dist/
+
+# Uploaded Databases
+backend/data/databases/*.db
+
+# Keep folder
+!backend/data/databases/.gitkeep
+
+# IDE
+.vscode/
+.idea/
